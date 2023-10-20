@@ -1,16 +1,21 @@
 import random
 
-min = 1
-max = 20
-number = random.randint(min, max)
+min_number = 1
+max_number = 20
+number = random.randint(min_number, max_number)
 attempts = 2
 
-guess = int(input(f"Guess a number from {min, max}: "))
+print(f"Guess a number from {min_number} to {max_number}:")
 
-while guess != number:
+for attempt in range(attempts):
+    guess = int(input(f"Attempt {attempt + 1}: "))
+    
     if guess < number:
-        print("Your number was too low")
+        print("Your number is too low.")
+    elif guess > number:
+        print("Your number is too high.")
     else:
-        print("Your number was too high")
-    guess = int(input("Please try again: "))
-print(f"Congratulations! You guessed correct. The number was {number}")
+        print(f"Congratulations! You guessed correctly. The number was {number}.")
+        break
+else:
+    print(f"Sorry, you've run out of attempts. The correct number was {number}.")
