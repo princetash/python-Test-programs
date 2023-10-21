@@ -1,0 +1,1 @@
+This is a test!. Let us see if it is working. The header is a small box across the top of the page. In it you write identification information like the course name and the date of the class. You will have noticed that all methods end with the same step: reviewing your notes as soon as possible after class. Do you think it's working?

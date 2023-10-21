@@ -5,14 +5,14 @@ number, detect their mistake using try and except and print an error
 message and skip to the next number."""
 
 def numbers():
-    npt = input("Enter a number: ")
+    #npt = input("Enter a number: ")
     count = 1
     total = 0
     average = 0
     while npt != "done":
         try:
             npt = input("Enter a number: ")
-            inpt = int(npt)
+            inpt = float(npt)
             total = total + inpt
             for _ in npt:
                 count += 1
