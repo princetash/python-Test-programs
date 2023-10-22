@@ -30,10 +30,21 @@ def words_frequency():
         #alternative syntax that would get rid of if...else block but instead use get()
             word_count[word] = word_count.get(word, 0) + 1
     #printing words which appear more than twice
-    for key in word_count:
-        if word_count[key] >= 2:
-            print(key, word_count[key])
+    # for key in word_count:
+    #     if word_count[key] >= 2:
+    #         print(key, word_count[key])
+    #sorting the words in the count dictionary
+    new_list = []
+    #unpacking the dictionary into a list of tuples so that we can apply the sort method
+    for key, value in list(word_count.items()):
+        #adding a tuple of key and value to the list
+        new_list.append((value, key))
 
+    new_list.sort(reverse=True)
+
+    #printing the first 10 words
+    for key, value in new_list[:10]:
+        print(key, value)
 #printing a dictionary of words and their frequency
     print(word_count)
 
