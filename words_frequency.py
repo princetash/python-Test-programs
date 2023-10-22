@@ -14,6 +14,7 @@ def words_frequency():
     #iterating through every line/sentence in the text document
     for line in file_words:
         print(line)
+        #the methods below remove the punctuation in the words
         line = line.rstrip()
         line = line.translate(line.maketrans('', '', string.punctuation))
         line = line.lower()
@@ -22,11 +23,12 @@ def words_frequency():
         #iterating through every word in the words that make up each sentence
         for word in words:
             #checking whether the word already exists in the word_count dictionary and if not set its initial count to 1 otherwise increament it by 1
-            if word not in word_count:
-                word_count[word] = 1
-            else:
-                word_count[word] += 1
-            #d[c] = d.get(c,0) + 1
+            # if word not in word_count:
+            #     word_count[word] = 1
+            # else:
+            #     word_count[word] += 1
+        #alternative syntax that would get rid of if...else block but instead use get()
+            word_count[word] = word_count.get(word, 0) + 1
     #printing words which appear more than twice
     for key in word_count:
         if word_count[key] >= 2:
