@@ -5,7 +5,7 @@ def reverse_lookup(diction, val):
             return key
     raise LookupError()
 
-d = {'name':'john','age':12, "religion":'christian','nationality':'kenya','birth_place':'kenya'} 
+d = {'name':'john','age':12, "religion":'christian','nationality':'kenyan','birth_place':'kenya'} 
 print(reverse_lookup(d, 'kenyan'))
 
 
@@ -26,7 +26,7 @@ def lookup(strings):
 result = lookup('parrot')
 print(result)
 
-
+#Method 1
 #converting values to keys and key to values
 #this function is using the results of the lookup function above
 def inverted_dict(d):
@@ -44,3 +44,24 @@ def inverted_dict(d):
     return inverse
 result_inverse = inverted_dict(result)
 print(result_inverse)
+
+
+#Method 2 Inverse lookup
+inverted_dict = dict(map(reversed, d.items()))
+print(inverted_dict)
+
+#method 3 inverse with defaultdict
+from collections import defaultdict
+students = {
+  'Ora Mckinney': 8,
+  'Theodore Hollandl': 7,
+  'Mae Fleming': 7,
+  'Mathew Gilbert': 8,
+  'Ivan Little': 7,  
+}
+def reverse_dict(st):
+    my_inverted_dict = defaultdict(list)
+    for key, value in students.items():
+        my_inverted_dict[value].append(key)
+    return dict(my_inverted_dict) 
+print(reverse_dict(students))

@@ -1,8 +1,11 @@
 from turtle import *
+import random
+
 
 shape("turtle")
-speed(10)
-pencolor("white")
+speed(5)
+#pencolor("white")
+colors = ["blue", "purple", "cyan", "white", "yellow", "green", "orange"]
 pensize(6)
 Screen().bgcolor("turquoise")
 
@@ -22,8 +25,11 @@ def snowflake_arm():
     backward(120)
 
 def snowflake():
-    for x in range(0,6):
+    for x in range(0,18):
+        color(random.choice(colors))
         snowflake_arm()
-        right(60)
+        right(20)
 
 snowflake()
+
+Screen().exitonclick()
