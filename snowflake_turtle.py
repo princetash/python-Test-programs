@@ -5,9 +5,10 @@ import random
 shape("turtle")
 speed(5)
 #pencolor("white")
-colors = ["blue", "purple", "cyan", "white", "yellow", "green", "orange"]
+colors = ["blue", "purple", "cyan", "white", "yellow", "red", "green", "orange"]
 pensize(6)
-Screen().bgcolor("turquoise")
+#Screen().bgcolor("turquoise")
+Screen().bgcolor("black")
 
 def vshape():
     right(25)
