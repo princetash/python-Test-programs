@@ -1,0 +1,1 @@
+{'red': ['apple', 'cherry', 'mango', 'tomatoes'], 'black': ['charcoal', 'grapes'], 'yellow': ['banana', 'mango'], 'green': ['banana', 'tomatoes'], 'blue': ['sky'], 'white': ['sky']}

@@ -1,0 +1,10 @@
+{
+    apple: red,
+    charcoal: black,
+    banana: yellow, green,
+    cherry: red,
+    mango: yellow, red,
+    grapes: black,
+    sky: blue, white,
+    tomatoes: red, green
+}

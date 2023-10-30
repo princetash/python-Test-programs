@@ -1,63 +1,50 @@
-item1_price = 200.0
-item2_price = 400.0
-item3_price = 600.0
-combo_discount = 0.1  # 10% discount for two unique items
-gift_pack_discount = 0.25  # 25% discount for all three items
+def read_dict_file(input_file):
+   
+    try:
+        with open(input_file, "r") as rf:
+            data = {}
+            
+            for line in rf:
+                if '=' in line:
+                    key, value = line.strip().split("=")
+        
+                    key = key.strip()
+        
+                    value = value.strip().split(", ")
+                    data[key] = value
+            return data
+    except FileNotFoundError:
+        print("Input file not found.") 
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-# Define a function to calculate the total price for selected items
+def invert_dict(original_dict):
+    inverted_dict = {}
 
-
-def calculate_total_price(selected_items):
-
-    total_price = 0.0
-    # Create a set of unique selected items to apply discounts correctly
-    unique_items = set(selected_items)
-
-    if "Item 1" in unique_items:
-        total_price += item1_price
-    if "Item 2" in unique_items:
-        total_price += item2_price
-    if "Item 3" in unique_items:
-        total_price += item3_price
-
-    # Apply discounts based on the number of unique items
-    if len(unique_items) == 2:
-        total_price *= (1 - combo_discount)
-    elif len(unique_items) == 3:
-        total_price *= (1 - gift_pack_discount)
-
-    return total_price
-
-
-# Calculate combo prices directly
-combo1_price = (item1_price + item2_price) * (1 - combo_discount)
-combo2_price = (item2_price + item3_price) * (1 - combo_discount)
-combo3_price = (item1_price + item3_price) * (1 - combo_discount)
-combo4_price = (item1_price + item2_price + item3_price) * \
-    (1 - gift_pack_discount)
-
-# Define a function to print the catalog
+    for key, value in original_dict.items():
+        if isinstance(value, list):
+            for v in value:
+                if v not in inverted_dict:
+                    inverted_dict[v] = [key]
+                else:
+                    inverted_dict[v].append(key)
+        else:
+            if value not in inverted_dict:
+                inverted_dict[value] = [key]
+            else:
+                inverted_dict[value].append(key)
+    return inverted_dict
 
 
-def print_catalog(selected_items):
-    print("Total Price for Selected Items:",
-          calculate_total_price(selected_items))
-    print("Online Store")
-    print("-" * 45)
-    print(f"Product(s) {' ' * 30} Price")
-    print(f"Item 1 {' '*35}{item1_price}")
-    print(f"Item 2 {' '*35}{item2_price}")
-    print(f"Item 3 {' '*35}{item3_price}")
-    print(f"Combo 1(Item 1 + 2){' '*23}{combo1_price}")
-    print(f"Combo 2(Item 2 + 3){' '*23}{combo2_price}")
-    print(f"Combo 3(Item 1 + 3){' '*23}{combo3_price}")
-    print(f"Combo 4(Item 1 + 2 + 3){' '*19}{combo4_price}")
-    print("-" * 45)
-    print("For delivery Contact: 76738648")
+input_file = "intry.txt"
+output_file = "outtry.txt"
 
 
-# List of selected items
-selected_items = ["Item 2", "Item 1"]
+original_dict = read_dict_file(input_file)
+print("Original Dictionary:")
+print(original_dict)
 
-# Call the print_catalog function to display the catalog
-print_catalog(selected_items)
+# Inverting the dictionary
+inverted_dict = invert_dict(original_dict)
+print("Inverted Dictionary:")
+print(inverted_dict)
